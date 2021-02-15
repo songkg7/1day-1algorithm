@@ -4,5 +4,5 @@
 - JavaScript, Pyhon3 를 사용하여 문제를 해결할 생각입니다.
 
 
-### 문제 풀이
+### 문제를 해결해나가는 과정은 다음 블로그에 업로드 됩니다.?
 https://songkg7.tistory.com/
