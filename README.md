@@ -3,5 +3,5 @@
 
 - JavaScript, Pyhon3 를 사용하여 문제를 해결할 생각입니다.
 
-# 문제 풀이
+### 문제 풀이
 https://songkg7.tistory.com/
