@@ -1,3 +1,5 @@
+// 두 개 뽑아서 더하기
+
 let numbers = [2, 1, 3, 4, 1];
 
 function solution(numbers) {
@@ -30,4 +32,4 @@ function solution(numbers) {
 //   return answer.sort((a, b) => a - b);
 // }
 
-solution(numbers);
+console.log(solution(numbers));
