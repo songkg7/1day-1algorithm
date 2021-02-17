@@ -12,17 +12,33 @@ price = [1, 2, 3, 2, 3]
 # 맨 처음 pop 한 값을 저장해 놓은 후, 연속적으로 pop하면서 초기값보다 작은 값이 나온다면
 # pop된 갯수를 구한다. 마지막 값의 경우 배열에 남은 값이 없으므로 0 을 리턴
 
+# 2번째 방법은 루프를 돌 때마다 배열을 초기화해줘야하는 작업이 필요할 것이다.
+
+
+# def solution(price):
+#     answer = []
+#     for i in range(len(price)):
+#         print(i)
+#         answer.append(0) # 기본값 세팅
+#         for j in price[i + 1:]:
+#             if price[i] <= j:
+#                 answer[i] += 1
+#             else:
+#                 answer[i] = 1
+#                 break;
+
 def solution(price):
     answer = []
+    for _ in range(len(price)):
+        answer.append(0)
+
     for i in range(len(price)):
-        print(i)
-        answer.append(0) # 기본값 세팅
+        cnt = 0
         for j in price[i + 1:]:
-            if price[i] <= j:
-                answer[i] += 1
-            else:
-                answer[i] = 1
-                break;
+            cnt += 1
+            if(price[i] > j):
+                break
+        answer[i] = cnt
 
             # if price[i] < j:
             #     time += 1
@@ -31,6 +47,6 @@ def solution(price):
             # else:
             #     time += 1
 
-    print(answer)
+    return answer
 
-solution(price)
+print(solution(price))
