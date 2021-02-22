@@ -2,39 +2,51 @@
 # 탐욕법
 # 백준 2217번
 
-# N = int(input())
+N = int(input())
+limit = [int(input()) for _ in range(N)]
 
-N = 4
-limit = [1, 2, 3, 4]
-# 20
-
-20/2
-
-# 1개씩 사용했을 경우, n개를 모두 사용했을 경우
-# 하나의 로프가 견딜 수 있는 무게 <= w(견뎌야하는 무게)/k(줄의 갯수)
-# 선택된 로프 중 견딜 수 있는 가장 작은 무게 <= w(견뎌야하는 무게)/k(줄의 갯수)
-
-# 풀이법
-# 1. 루프를 돌며 배열에서 하나씩 선택해가며
-#   견딜 수 있는 무게를 새로운 배열 weights에 담는다.
-# 2. weights 에서 최댓값을 출력한다.
-
-# ex)
-# 1
-# 1 2 
-# 1 2 3 
-# 1 2 3 4 
-# 2
-# 2 3 
-# 2 3 4 
-# 3
-# 3 4 
-# 4
 index = 0
-while index != len(limit):
-    
+nextIdx = 0
+weights = [] # 병렬로 연결된 로프들이 견딜 수 있는 무게가 저장
+while index != N:
+    # print(f'index = {index}')
+    for i in range(nextIdx, len(limit)):
+        rope = [] # 선택한 로프를 담을 배열, index가 증가하고 다시 들어올 때 초기화
+        for j in range(nextIdx, i + 1):
+            # print(f'limit[j] = {limit[j]}')
+            rope.append(limit[j])
+        
+        rope.sort()
+        result = rope[0] * len(rope) # 병렬로 견딜 수 있는 무게
+        weights.append(result) # 최대 무게를 구하기 위해 배열에 담아둔다.
 
-for i in range(len(limit)):
-    for j in range(1, i+1):
-        print(j)
+    nextIdx += 1
+    index += 1
+weights.sort()
+# print(weights)
+print(weights[-1])
+
+# index = 0
+# nextIdx = 0
+# weights = [] # 병렬로 연결된 로프들이 견딜 수 있는 무게가 저장
+# while index != N:
+#     # print(f'index = {index}')
+#     for i in range(nextIdx, len(limit)):
+#         rope = [] # 선택한 로프를 담을 배열, index가 증가하고 다시 들어올 때 초기화
+#         for j in range(i + 1):
+#             # print(f'limit[j] = {limit[j]}')
+#             rope.append(limit[j])
+        
+#         rope.sort()
+#         print(rope)
+#         result = rope[0] * len(rope) # 병렬로 견딜 수 있는 무게
+#         weights.append(result) # 최대 무게를 구하기 위해 배열에 담아둔다.
+
+#     nextIdx += 1
+
+#     index += 1
+
+# weights.sort()
+# print(weights)
+# print(weights[-1])
 

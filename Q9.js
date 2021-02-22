@@ -1,7 +1,7 @@
 // Clear
 
 let index = 0;
-const limit = [10, 15, 50, 30];
+const limit = [10, 15, 150, 30];
 let weights = [];
 
 while(index != limit.length) {
