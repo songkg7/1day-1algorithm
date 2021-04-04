@@ -10,19 +10,21 @@ import collections
 participant = ["leo", "kiki", "eden"]
 completion = ["eden", "kiki"]
 
-def solution(participant, completion):
 
+def solution(participant, completion):
     a = sorted(participant)
     b = sorted(completion)
 
     for i in range(len(a)):
-        if (i == len(a)-1):
+        if i == len(a) - 1:
             return a[i]
 
-        if (a[i] != b[i]):
+        if a[i] != b[i]:
             return a[i]
+
 
 print(solution(participant, completion))
+
 
 def solution2(participant, completion):
     answer = ''
@@ -36,6 +38,7 @@ def solution2(participant, completion):
     answer = dic[temp]
 
     return answer
+
 
 def solution3(participant, completion):
     answer = collections.Counter(participant) - collections.Counter(completion)
