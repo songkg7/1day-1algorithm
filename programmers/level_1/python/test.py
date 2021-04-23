@@ -1,6 +1,4 @@
-answer = [('AC', 4), ('BCD', 3)]
+x = [2]
+y = [1, 2]
 
-for menu, cnt in answer:
-    print(menu)
-    print(cnt)
-
+print(y - x)
