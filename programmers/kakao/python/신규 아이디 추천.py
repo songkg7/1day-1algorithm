@@ -1,5 +1,5 @@
 # 신규 아이디 추천
-# 2021 kakao blind recuitment
+# 2021 kakao blind recruitment
 # 프로그래머스
 
 # NOTE:
