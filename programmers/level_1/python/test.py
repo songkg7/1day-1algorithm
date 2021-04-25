@@ -1,4 +1,12 @@
-x = [2]
-y = [1, 2]
+from collections import deque
 
-print(y - x)
+que = deque(maxlen=3)
+print(que)
+que.append(1)
+que.append(2)
+que.append(3)
+que.append(4)
+que.append(5)
+
+print(que)
+
