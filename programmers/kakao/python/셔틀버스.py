@@ -1,4 +1,5 @@
 # 2018 kakao blind recruitment
+# level 3
 
 import re
 from collections import deque
@@ -27,6 +28,7 @@ def solution(n, t, m, timetable):
 
     waiting = sorted(waiting)  # 온 순서대로 세우기
 
+    # 버스는 9시부터 온다. (540분)
     start_time = 540
 
     # 셔틀 운행 횟수만큼 반복
@@ -35,6 +37,7 @@ def solution(n, t, m, timetable):
     # => 마지막에 줄을 서는 사람보다 1분만 빨리오게 하면 된다.
     for driving in range(n):
         # bus 최대 인원 설정
+        # FIXME: 굳이 queue 를 사용하지 않아도 해결할 수 있다. 반복문도 없앨 수 있을 것 같다.
         bus = deque(maxlen=m)
         for _ in range(m):
             if not waiting:
@@ -44,8 +47,6 @@ def solution(n, t, m, timetable):
                 bus.append(passenger_crew)
 
         start_time += t
-        print(bus)
-        print(start_time)
 
     # 마지막 버스 남는 자리 체크 후 꽉 차있으면 콘의 도착 시간 설정
     if len(bus) == m:
@@ -69,12 +70,6 @@ def solution(n, t, m, timetable):
     answer = hour + ':' + minute
 
     return answer
-
-
-# temp = [time.split(':') for time in timetable]
-
-# 분단위 시간에서 -1 하면 콘이 도착해야하는 시간
-# 버스는 9시부터 온다. (540분)
 
 
 print(solution(n, t, m, timetable))
