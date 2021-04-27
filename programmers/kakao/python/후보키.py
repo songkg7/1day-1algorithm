@@ -1,8 +1,8 @@
 # 2019 kakao blind recruitment
 # level 2
+# 이해하기 힘듬
 
 from itertools import combinations
-from collections import Counter
 
 relation = [["100", "ryan", "music", "2"],
             ["200", "apeach", "math", "2"],
@@ -17,20 +17,30 @@ relation = [["100", "ryan", "music", "2"],
 
 # set 했을 때 길이가 줄어든다면 유일성을 통과하지 못했다고 할 수 있다.
 
-# 두 원소를 선택해서 위의 과정을 반복해본다.
+# 비트마스크를 활용하면 쉽게 풀 수 있다.
+
+def checkuniq(arr, row):
+    return True if len(set(zip(*arr))) == row else False
+
+
+def checkmin(num, unique):
+    for i in unique:
+        if i & num == i: return False
+    return True
+
 
 def solution(relation):
+    relation = tuple(zip(*relation))
+    col = len(relation)
+    row = len(relation[0])
+    candidate = []
 
-    for student in relation:
-        for i in range(1, len(student)):
-            cond = combinations(student, i)
-            for info in cond:
-                print(info)
+    for num in range(1, 1 << col):
+        tmp = tuple(relation[i] for i in range(col) if num & (1 << i))
 
-    # cond = list(zip(*relation))
-    # for column in cond:
-    #     # print(column)
-    #     if len(set(column)) == len(column):
-    #         print(column)
+        if checkuniq(tmp, row) and checkmin(num, candidate):
+            candidate.append(num)
+
+    return len(candidate)
 
 print(solution(relation))
