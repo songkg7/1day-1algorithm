@@ -1,6 +1,10 @@
-list1 = ['a', 'a', 'a']
+import collections
 
-for s in list1:
-    print(s)
-    list1.remove(s)
-    print(list1)
+_str = "abcdefg"
+
+que_list = collections.deque(_str)
+
+que_list.rotate(2)
+
+print(list(que_list))
+
