@@ -19,11 +19,11 @@ def solution(name):
             break
         left, right = 1, 1
 
-        # 왼쪽으로 이동, A를 만날때까지
+        # 왼쪽으로 이동, 바꿔야하는 알파벳을 만날때까지
         while make_name[idx - left] == 0:
             left += 1
 
-        # A 를 만날때까지 오른쪽으로 이동
+        # 바꿔야하는 알파벳를 만날때까지 오른쪽으로 이동
         while make_name[idx + right] == 0:
             right += 1
 
