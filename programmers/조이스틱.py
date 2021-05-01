@@ -9,7 +9,7 @@ name = "JEROEN"
 # return = 56
 
 def solution(name):
-    make_name = [min(ord(i) - ord('A'), ord('Z') - ord(i)) for i in name]
+    make_name = [min(ord(i) - ord('A'), ord('Z') - ord(i) + 1) for i in name]
     answer = 0
     idx = 0
     while True:
