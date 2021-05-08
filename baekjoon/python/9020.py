@@ -9,30 +9,33 @@ import sys
 
 T = int(sys.stdin.readline())
 
-for _ in range(T):
-    n = int(sys.stdin.readline())
 
-    prime = []
-    result = []
-    for num in range(2, n + 1):  # 범위
+def make_prime():
+    arr = []
+
+    for number in range(2, 10000 + 1):  # 범위
         is_prime = True
-        for i in range(2, int(math.sqrt(num) + 1)):
-            if num % i == 0:
+        for i in range(2, int(math.sqrt(number) + 1)):
+            if number % i == 0:
                 is_prime = False
                 break
 
         if is_prime:
-            prime.append(num)
+            arr.append(number)
+    return arr
 
+
+prime = make_prime()
+print(prime)
+
+for _ in range(T):
+    n = int(sys.stdin.readline())
+
+    result = []
     for num in prime:
         if prime.count(n - num) != 0:
-            result.append([num, n - num])
+            if result.count([n - num, num]) == 0:
+                result.append([num, n - num])
 
-    answer = []
-    x = n
-    for i in result:
-        if abs(i[0] - i[1]) < x:
-            x = abs(i[0] - i[1])
-            answer = [i[0], i[1]]
-
-    print(f'{answer[0]} {answer[-1]}')
+    # print(f'result = {result}')
+    print(" ".join(map(str, result[-1])))
