@@ -26,16 +26,20 @@ def make_prime():
 
 
 prime = make_prime()
-print(prime)
 
 for _ in range(T):
     n = int(sys.stdin.readline())
 
     result = []
-    for num in prime:
-        if prime.count(n - num) != 0:
+    answer = []
+    for i in prime:
+        if i > n:
+            break
+        answer.append(i)
+
+    for num in answer:
+        if answer.count(n - num) != 0:  # O(N^2)
             if result.count([n - num, num]) == 0:
                 result.append([num, n - num])
 
-    # print(f'result = {result}')
     print(" ".join(map(str, result[-1])))
