@@ -1,8 +1,6 @@
 # 좌표 압축
 # 정렬
 
-# FIXME: 시간초과
-
 import sys
 
 N = int(sys.stdin.readline().strip())
@@ -10,5 +8,7 @@ N = int(sys.stdin.readline().strip())
 position = list(map(int, sys.stdin.readline().strip().split()))
 encoder = sorted(set(position))
 
-for i in position:
-    print(encoder.index(i), end=' ')
+dic = {encoder[i]: i for i in range(len(encoder))}
+
+result = [dic[n] for n in position]
+print(*result)
