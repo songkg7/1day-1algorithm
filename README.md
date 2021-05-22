@@ -215,25 +215,14 @@ for i in range(2, N+1):
 
 ## 최소공배수 / 최대공약수 ✔️
 #### 💡 최대공약수
-
 ```python
 from fractions import gcd
-
-gcd(6, 8)  # 2, deprecated
-
-# python 3.8
-import math
-math.gcd(6, 8)
-
+gcd(6,8) # 2
 ```
 #### 💡 최소공배수
-
 ```python
-import math
-
-
-def lcm(a, b):
-    return a * b // math.gcd(a, b)
+def lcm(a,b):
+    return  a * b // gcd(a, b)
 ```
 <hr>
 
