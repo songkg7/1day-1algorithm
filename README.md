@@ -234,6 +234,10 @@ import math
 
 def lcm(a, b):
     return a * b // math.gcd(a, b)
+
+# new in version 3.9
+# math 에 lcm 함수가 추가되었다.
+math.lcm(15, 25) # 75
 ```
 <hr>
 
