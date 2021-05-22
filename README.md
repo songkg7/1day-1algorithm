@@ -220,11 +220,14 @@ for i in range(2, N+1):
 from fractions import gcd
 
 gcd(6, 8)  # 2, deprecated
+```
 
-# python 3.8
+deprecated 되었으므로 math 사용을 권장한다.
+```python
+# new in version 3.5
 import math
-math.gcd(6, 8)
 
+math.gcd(6, 8)
 ```
 #### 💡 최소공배수
 
@@ -237,6 +240,7 @@ def lcm(a, b):
 
 # new in version 3.9
 # math 에 lcm 함수가 추가되었다.
+
 math.lcm(15, 25) # 75
 ```
 <hr>
