@@ -4,12 +4,7 @@
 
 import math
 
-
-def lcm(a, b):
-    return a * b // math.gcd(a, b)
-
-
 n, m = map(int, input().split())
 
 print(math.gcd(n, m))
-print(lcm(n, m))
+print(math.lcm(n, m))
