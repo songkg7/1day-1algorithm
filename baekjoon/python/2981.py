@@ -1,15 +1,28 @@
 # 검문
 # 정수론 및 조합론
 
-# FIXME: 시간초과, 입력으로 1,000,000,000 보다 작거나 같은 자연수가 들어온다. 범위가 매우 넓으므로 고려해야한다.
+# nums 의 최대공약수 다음 숫자부터 검사한다. 최대공약수는 반드시 answer 에 포함된다.
+# a, b, c 가 nums 의 요소일 경우,
+# b - a, c - b 의 최대공약수의 약수가 정답
+# 약수는 제곱근까지만 검사한다.
+
+
+import math
 
 N = int(input())
-nums = [int(input()) for _ in range(N)]
+nums = sorted([int(input()) for _ in range(N)])
 
-answer = []
-for M in range(2, min(nums) + 1):
-    result = set(map(lambda x: x % M, nums))
-    if len(result) == 1:
-        answer.append(M)
+diff = []
+for i in range(len(nums) - 1):
+    diff.append(nums[i + 1] - nums[i])
 
-print(*answer)
+gcd = math.gcd(*diff)
+
+factor = []
+for i in range(2, int(math.sqrt(gcd)) + 1):
+    if gcd % i == 0:
+        factor.append(i)
+        factor.append(gcd // i)
+factor.append(gcd)
+factor = sorted(set(factor))
+print(*factor)
