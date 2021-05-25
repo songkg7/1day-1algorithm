@@ -2,30 +2,34 @@
 # queue
 # 2021/05/25 1:02 오후
 
-# FIXME: 시간초과
+# TODO: 정리하기
 
-import sys
-from collections import deque
-
-T = int(sys.stdin.readline().strip())
+T = int(input())
 for _ in range(T):
-    p = sys.stdin.readline().strip()
-    n = int(sys.stdin.readline().strip())
-    nums = list(map(int, sys.stdin.readline().strip()[1:-1][0::2]))
+    p = input()
+    n = int(input())
+    nums = input()[1:-1].split(',')
 
-    status = True
+    # 뒤집는 과정 1차 필터링
+    p = p.replace('RR', '')
 
-    for f in p:
-        if f == 'R':
-            nums = nums[::-1]
-        else:
-            if nums:
-                deque(nums).popleft()
+    front, back, rev = 0, 0, 0
+    for i in p:
+        if i == 'R':
+            rev += 1
+        elif i == 'D':
+            if rev % 2 == 0:
+                front += 1
             else:
-                status = False
-                break
+                back += 1
 
-    if status:
-        print(str(list(nums)))
+    if front <= n - back:
+        nums = nums[front:n - back]
+        if rev % 2 != 0:
+            print('[' + ','.join(nums[::-1]) + ']')
+        else:
+            print('[' + ','.join(nums) + ']')
     else:
         print("error")
+
+# ClearTime = 2:25 오후
