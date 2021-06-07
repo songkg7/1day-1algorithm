@@ -1,23 +1,17 @@
 # 2017 팁스타운
 # level 2
 
-# TODO: 다시 풀어보기
-
-s = "aaabbabaab"
-
-
 def solution(s):
     stack = []
-    for i in s:
-        if len(stack) == 0:
-            stack.append(i)
-        elif stack[-1] == i:
+    for word in s:
+        if len(stack) > 0 and word == stack[-1]:
             stack.pop()
         else:
-            stack.append(i)
-    if len(stack) == 0:
-        return 1
-    else:
-        return 0
+            stack.append(word)
 
-print(solution(s))
+    if stack:
+        return 0
+    else:
+        return 1
+
+# ClearTime = 2021/06/07 5:50 오후
