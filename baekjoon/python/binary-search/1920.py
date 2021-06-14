@@ -10,31 +10,26 @@ A = list(map(int, sys.stdin.readline().rstrip().split()))
 M = int(sys.stdin.readline())
 nums = list(map(int, sys.stdin.readline().rstrip().split()))
 
-# 시간초과일 경우 다른 정렬방법 사용하기
 A.sort()
 
 
 def binary_search(v, li):
-    if len(li) == 1 and v != li[0]:
-        return False
+    start = 0
+    end = len(li) - 1
 
-    mid = len(li) // 2
+    while start <= end:
+        mid = (start + end) // 2
+        if li[mid] == v:
+            return True
+        elif li[mid] < v:
+            start = mid + 1
+        else:
+            end = mid - 1
 
-    if v == li[mid]:
-        return True
-
-    if v < li[mid]:
-        li = li[:mid]
-        return binary_search(v, li)
-    else:
-        li = li[mid:]
-        return binary_search(v, li)
+    return False
 
 
 for num in nums:
-    if binary_search(num, A):
-        print(1)
-    else:
-        print(0)
+    print(1 if binary_search(num, A) else 0)
 
 # ClearTime = 2021/06/15 6:00 오전
