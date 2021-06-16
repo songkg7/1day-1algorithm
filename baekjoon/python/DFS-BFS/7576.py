@@ -35,10 +35,10 @@ def bfs():
                     day = box[ny][nx] - 1
 
                     # 박스 상태 확인 코드
-                    print('-----')
-                    print(f'{box[ny][nx] - 1}일')
-                    for i in box:
-                        print(i)
+                    # print('-----')
+                    # print(f'{box[ny][nx] - 1}일')
+                    # for i in box:
+                    #     print(i)
 
     # 익지 않은 토마토가 있는지 검사하기
     for i in box:
