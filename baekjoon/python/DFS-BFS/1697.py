@@ -9,31 +9,23 @@
 from collections import deque
 
 N, K = map(int, input().split())
-
 visited = [0] * 100_001
 
 
-def bfs(r, destination):
-    queue = deque([r])
-    visited[r] = 1
-    while queue:
-        if visited[destination] != 0:
-            return visited[destination] - 1
+def bfs():
+    queue = deque([N])
 
+    while queue:
         x = queue.popleft()
 
-        dx = [1, -1, x]
-
-        for i in range(3):
-            nx = x + dx[i]
-            if 0 <= nx < 100_001:
-                if visited[nx] == 0:
-                    visited[nx] = visited[x] + 1
-                    queue.append(nx)
-                else:
-                    visited[nx] = min(visited[nx], visited[x] + 1)
+        if x == K:
+            return visited[x]
+        for i in (x - 1, x + 1, x * 2):
+            if 0 <= i < 100_001 and visited[i] == 0:
+                visited[i] = visited[x] + 1
+                queue.append(i)
 
 
-print(bfs(N, K))
+print(bfs())
 
 # ClearTime = 2021/06/16 7:15 오후
