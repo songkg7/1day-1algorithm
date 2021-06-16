@@ -29,9 +29,11 @@ def bfs(r, destination):
             if 0 <= nx < 100_001:
                 if visited[nx] == 0:
                     visited[nx] = visited[x] + 1
+                    queue.append(nx)
                 else:
                     visited[nx] = min(visited[nx], visited[x] + 1)
-                queue.append(nx)
 
 
 print(bfs(N, K))
+
+# ClearTime = 2021/06/16 7:15 오후
