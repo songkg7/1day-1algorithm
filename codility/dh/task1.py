@@ -9,31 +9,30 @@ C = "Example"
 
 
 def solution(S, C):
-    s = re.compile(r"(?P<name>\w+\s+\w+-?\s*\w*)\s+<(?P<id>\w+.\w+)(?P<count>\d?)@\w+.com>")
-
-    names = S.split(', ')
-    print(names)
     result = []
-    for name in names:
-        split = name.split()
+    step1 = re.compile(r"(?P<ln>\w+)\s+(?P<fn>\w+)")
+    dp = dict()
+    peoples = S.split(', ')
+    print(peoples)
+    for name in peoples:
+        split = name.split(' ')
         if len(split) == 3:
             name = split[0] + ' ' + split[2]
 
-        p = re.sub(r'(\w+)\s*(\w+)', name + ' <\\1.\\2@' + C.lower() + '.com>', name.lower().replace('-', ''))
+        if name in dp:
+            dp[name] += 1
+        else:
+            dp[name] = 1
 
-        if p in result:
-            r = s.sub(lambda x: str(int(x.group("count")) + 1), p)
-            print(r)
-
+        if dp[name] == 1:
+            p = step1.sub(name + r" <\g<ln>.\g<fn>@" + C.lower() + '.com>',
+                          name.lower().replace("-", ''))
+        else:
+            p = step1.sub(name + r" <\g<ln>.\g<fn>" + str(dp[name]) + '@' + C.lower() + '.com>',
+                          name.lower().replace("-", ''))
         result.append(p)
 
-    print(result)
-
-    for i in result:
-        print(s.search(i).group("name"))
-        print(s.search(i).group("id"))
-
-    # return result
+    return result
 
 
 print(solution(S, C))
