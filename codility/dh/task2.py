@@ -2,7 +2,6 @@
 #
 # 2021/06/19 6:58 오후
 
-import itertools
 import numpy
 
 S = "aaaaaaaaa"

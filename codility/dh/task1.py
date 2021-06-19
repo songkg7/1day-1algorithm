@@ -13,11 +13,9 @@ def solution(S, C):
     step1 = re.compile(r"(?P<ln>\w+)\s+(?P<fn>\w+)")
     dp = dict()
     peoples = S.split(', ')
-    print(peoples)
     for name in peoples:
         split = name.split(' ')
-        if len(split) == 3:
-            name = split[0] + ' ' + split[2]
+        name = split[0] + ' ' + split[-1]
 
         if name in dp:
             dp[name] += 1
