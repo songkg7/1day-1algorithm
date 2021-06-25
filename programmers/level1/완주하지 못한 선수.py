@@ -2,17 +2,15 @@
 # Hash
 # 2021/06/26 12:15 오전
 
+from collections import Counter
+
 participant = ["mislav", "stanko", "mislav", "ana"]
 completion = ["stanko", "ana", "mislav"]
 
 
 def solution(participant, completion):
-    participant.sort()
-    completion.sort()
-    for p, c in zip(participant, completion):
-        if p != c:
-            return p
-    return participant[-1]
+    answer = list(Counter(participant) - Counter(completion))
+    return answer[0]
 
 
 print(solution(participant, completion))
