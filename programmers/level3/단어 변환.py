@@ -2,7 +2,7 @@
 # DFS & BFS
 # 2021/06/25 1:37 오후
 
-# 한 번에ㅔ 한 개의 알파벳만 바꿀 수 있다.
+# 한 번에 한 개의 알파벳만 바꿀 수 있다.
 # words 에 있는 단어로만 바꿀 수 있다.
 # words 에 target 이 없다면 0을 return
 
@@ -35,7 +35,7 @@ def solution(begin, target, words):
         # 다른 부분 검사 후 목적지 추가
         for w in words:
             diff = 0
-            for i in range(len(w)):  # 모든 단어의 길이는 같다.
+            for i in range(len(w)):  # 뮨제의 제한 조건: 모든 단어의 길이는 같다.
                 if n[i] != w[i]:
                     diff += 1
             if diff == 1 and w not in visited:  # 다른 단어가 하나뿐이고 방문한 적이 없다면, 목적지에 설정, 전 노드의 카운트 + 1
