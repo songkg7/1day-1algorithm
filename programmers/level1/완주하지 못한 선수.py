@@ -7,18 +7,12 @@ completion = ["stanko", "ana", "mislav"]
 
 
 def solution(participant, completion):
-    data = dict()
-    for p in participant:
-        if p not in data:
-            data[p] = 1
-        else:
-            data[p] += 1
-
-    for c in completion:
-        data[c] += 1
-
-    a = list(filter(lambda x: x[1] % 2 == 1, data.items()))
-    return a[0][0]
+    participant.sort()
+    completion.sort()
+    for p, c in zip(participant, completion):
+        if p != c:
+            return p
+    return participant[-1]
 
 
 print(solution(participant, completion))
