@@ -7,7 +7,23 @@
 #### 문제를 해결해나가는 과정 및 풀이는 다음 블로그에 업로드 됩니다.
 https://songkg7.tistory.com/
 
-코딩테스트 때 쓰이는 것들 모음
+
+## Commit Convention
+커밋 메세지는 최대한 짧고 간결하게 작성한다.
+
+- convention: Flatform < Category > TITLE - {simple message}
+
+ex) Solve: Codility < DFS > lesson 5-2
+
+ex) Solve: BOJ < Brute Force > 블랙잭
+
+- Refactor: 가독성 또는 성능 개선을 위한 코드 리팩토링의 경우
+- Solve: 문제를 클리어했을 경우 최초 1회
+- Retry: 제대로 이해하지 못했거나, 스스로 풀지 못한 문제를 다시 도전한 경우 (Clear와 관련 없음)
+- Fail: 문제를 해결하지 못했지만, 과정을 기록하기 위해 커밋하는 경우
+- Docs: 주석 및 문서 수정의 경우
+
+## 코딩테스트에 자주 쓰이는 내용 모음
 
 ## heap - 힙 ✔️
 ```python
