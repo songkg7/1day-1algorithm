@@ -4,11 +4,11 @@
 
 import re
 
-s = "a132"
+s = "1234"
 
 
 def solution(s):
-    return s.isdigit() and len(s) in (4, 6)
+    return bool(re.match(r"^(\d{4}|\d{6})$", s))
 
 
 print(solution(s))
