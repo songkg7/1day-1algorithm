@@ -4,19 +4,11 @@
 
 import re
 
-s = "12a4"
+s = "a132"
 
 
 def solution(s):
-    if len(s) == 4 or len(s) == 6:
-        p = re.compile(r"\d")
-        m = p.findall(s)
-        if len(m) == len(s):
-            return True
-        else:
-            return False
-    else:
-        return False
+    return s.isdigit() and len(s) in (4, 6)
 
 
 print(solution(s))
