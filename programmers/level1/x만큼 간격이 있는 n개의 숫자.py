@@ -2,16 +2,8 @@
 #
 # 2021/07/03 8:14 오후
 
-x = 2
-n = 5
-
-
 def solution(x, n):
-    answer = [x]
-    while len(answer) < n:
-        answer.append(answer[-1] + x)
-
-    return answer
+    return [i * x + x for i in range(n)]
 
 
 print(solution(x, n))
