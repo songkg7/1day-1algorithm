@@ -10,15 +10,11 @@ arr2 = [27, 56, 19, 14, 14, 10]
 def solution(n, arr1, arr2):
     answer = []
 
-    # bit
     for c1, c2 in zip(arr1, arr2):
-        answer.append(bin(c1 | c2)[2:])
-
-    # replace
-    for i in range(len(answer)):
-        while len(answer[i]) != n:
-            answer[i] = '0' + answer[i]
-        answer[i] = answer[i].replace('1', '#').replace('0', ' ')
+        a = bin(c1 | c2)[2:]
+        a = a.zfill(n)
+        a = a.replace('1', '#').replace('0', ' ')
+        answer.append(a)
 
     return answer
 
