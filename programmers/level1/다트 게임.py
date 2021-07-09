@@ -13,30 +13,20 @@ def solution(dart_result):
     point_data = {
         'S': 1,
         'D': 2,
-        'T': 3
+        'T': 3,
+        '': 1,
+        '*': 2,
+        '#': -1
     }
 
-    count = []
+    darts = p.findall(dart_result)
+    print(darts)
+    for i in range(len(darts)):
+        if darts[i][2] == '*' and i > 0:
+            darts[i - 1] *= 2
+        darts[i] = int(darts[i][0]) ** point_data[darts[i][1]] * point_data[darts[i][2]]
 
-    while dart_result:
-        result = p.search(dart_result)
-        # print(p.findall(dart_result))
-
-        point = int(result.group("point"))
-        bonus = result.group("bonus")
-        option = result.group("option")
-
-        count.append(point ** point_data[bonus])
-        if option == '*':
-            count[-1] *= 2
-            if len(count) > 1:
-                count[-2] *= 2
-        elif option == '#':
-            count[-1] *= -1
-
-        dart_result = dart_result[result.end():]
-
-    return sum(count)
+    return sum(darts)
 
 
 print(solution(dart_result))
