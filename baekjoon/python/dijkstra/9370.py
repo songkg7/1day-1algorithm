@@ -6,23 +6,23 @@ import sys
 import heapq
 
 
-def dijkstra(start, end):
+def dijkstra(start):
     dist = {i: float('inf') if i != start else 0 for i in range(1, n + 1)}
 
-    heap = [start]
+    heap = [(0, start)]
 
     while heap:
-        cur_node = heapq.heappop(heap)
+        cur_dist, cur_node = heapq.heappop(heap)
 
-        if not nodes[cur_node]:
+        if dist[cur_node] < cur_dist:
             continue
 
         for next_node, d in nodes[cur_node]:
-            if dist[next_node] > dist[cur_node] + d:
-                dist[next_node] = dist[cur_node] + d
-                heapq.heappush(heap, next_node)
-
-    return dist[end]
+            new_d = cur_dist + d
+            if dist[next_node] > new_d:
+                dist[next_node] = new_d
+                heapq.heappush(heap, (new_d, next_node))
+    return dist
 
 
 T = int(sys.stdin.readline())
@@ -44,23 +44,24 @@ for _ in range(T):
 
     # g h 를 지나서 가는 길이 스타트 지점부터 두개의 목적지까지 가는 최소 경로와 같다면 정답에 포함
     result = []
-    for i in range(len(candidates)):
-        result.append(dijkstra(s, candidates[i]))
+    s_ = dijkstra(s)
+    g_ = dijkstra(g)
+    h_ = dijkstra(h)
 
     answer = []
 
     # 중간 경로
-    gh = dijkstra(g, h)
+    for goal in candidates:
+        sh1 = s_[h] + h_[g] + g_[goal]
+        sg1 = s_[g] + g_[h] + h_[goal]
 
-    for i in range(len(result)):
-        sh1 = dijkstra(s, h) + gh + dijkstra(g, candidates[i])
-        sg1 = dijkstra(s, g) + gh + dijkstra(h, candidates[i])
-
-        if min(sh1, sg1) in result:
-            answer.append(candidates[i])
+        if sh1 != float('inf') or sg1 != float('inf'):  # 목적지에 도달할 수 없는 경우 제외
+            if sh1 == s_[goal] or sg1 == s_[goal]:
+                answer.append(goal)
 
     answer.sort()
 
     print(*answer)
 
 # ClearTime = 2021/07/17 4:50 오후 - 시간 초과
+# ClearTime = 2021/07/17 5:47 오후
