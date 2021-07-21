@@ -10,17 +10,9 @@ def solution(s):
     result = 0  # 제거된 0의 개수
     while s != "1":
         count += 1
-
-        length = len(s)  # 최초 길이
-
-        remove_zero = s.replace("0", '')
-        a = len(remove_zero)  # 0 제거 후 길이
-
-        # 제거한 0의 개수
-        result += length - a
-
-        # 이진 변환 결과
-        s = bin(a)[2:]
+        num = s.count('1')
+        result += len(s) - num
+        s = bin(num)[2:]
 
     return [count, result]
 
