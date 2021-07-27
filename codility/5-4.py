@@ -9,17 +9,19 @@
 # 1을 미리 카운트해놓은 숫자로 바꿔놓고 하면 어떨까?
 # ex) [0, 3, 0, 2, 1]
 
+# 2. use combination
+# O(N**2) 예상
+
+from itertools import combinations
+
 arr = [0, 1, 0, 1, 1]
 
 
 def solution(A):
-    result = 0
-    while 0 in A:
-        A = A[A.index(0) + 1:]
-        result += A.count(1)
-    return result
+    return len(list(filter(lambda x: x[0] == 0 and x[1] != 0, combinations(A, 2))))
 
 
 print(solution(arr))
 
 # ClearTime = 2021/07/27 6:59 오후 - 50%
+# ClearTime = 2021/07/27 7:24 오후 - 50%
