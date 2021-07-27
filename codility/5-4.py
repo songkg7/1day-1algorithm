@@ -12,16 +12,25 @@
 # 2. use combination
 # O(N**2) 예상
 
-from itertools import combinations
-
 arr = [0, 1, 0, 1, 1]
 
 
 def solution(A):
-    return len(list(filter(lambda x: x[0] == 0 and x[1] != 0, combinations(A, 2))))
+    result = 0
+    zero = 0
+    for x in A:
+        if x == 0:
+            zero += 1
+        if x == 1:
+            result += zero
+
+    if result > 1_000_000_000:
+        return -1
+    return result
 
 
 print(solution(arr))
 
 # ClearTime = 2021/07/27 6:59 오후 - 50%
 # ClearTime = 2021/07/27 7:24 오후 - 50%
+# ClearTime = 2021/07/27 7:43 오후
