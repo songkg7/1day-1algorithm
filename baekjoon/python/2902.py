@@ -5,9 +5,11 @@
 # 1. 평범한 풀이
 # 2. 정규식
 
-w = input().split('-')
+import re
 
-for i in w:
-    print(i[0], end='')
+p = re.compile(r'[A-Z]')
+s = input()
+
+print(''.join(p.findall(s)))
 
 # ClearTime = 2021/08/13 6:50 오후
