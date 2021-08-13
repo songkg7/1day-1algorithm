@@ -8,9 +8,6 @@ while True:
     if s[0] == '0':
         break
 
-    a = s.copy()
-    s.reverse()
-
-    print('yes' if a == s else 'no')
+    print('yes' if s == s[::-1] else 'no')
 
 # ClearTime = 2021/08/13 10:04 오후
