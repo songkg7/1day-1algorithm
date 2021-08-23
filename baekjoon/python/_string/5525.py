@@ -8,19 +8,23 @@ N = int(input())
 M = int(input())
 S = input()
 
-P = 'I' + 'OI' * N  # N = 1
-
 count = 0
+answer = 0
+stack = []
 
-idx = 0
-while True:
-    find = S.find(P, idx)
-    if find > 0:
-        idx = find + 2
+for i in range(M):
+    if S[i] == 'I':
+        stack.append(i)
+
+for i in range(1, len(stack)):
+    if stack[i] - stack[i - 1] == 2:
         count += 1
     else:
-        break
+        count = 0
 
-print(count)
+    if count >= N:
+        answer += 1
+
+print(answer)
 
 # ClearTime = 2021/08/23 8:17 오후 - 50%
