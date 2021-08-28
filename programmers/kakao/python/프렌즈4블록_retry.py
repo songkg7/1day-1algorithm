@@ -32,7 +32,7 @@ def pop_num(b, m, n):
         b[i][j] = 0
 
     for i, row in enumerate(b):
-        empty = ['_'] * row.count(0)
+        empty = ['_'] * row.hit(0)
         b[i] = empty + [block for block in row if block != 0]
     return len(pop_set)
 

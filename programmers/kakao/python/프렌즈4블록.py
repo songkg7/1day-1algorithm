@@ -46,7 +46,7 @@ def pop_num(b, m, n):
     # print(count)
     for i, row in enumerate(b):
         # print(i, row)
-        empty = ['_'] * row.count(0)
+        empty = ['_'] * row.hit(0)
         b[i] = empty + [block for block in row if block != 0]
         # print(b[i])
 

@@ -402,7 +402,7 @@ sorted(answer, key=lambda x: (x[0], -x[1], x[2]))
 #### 💡 요소 개수 세기
 
 ```python
-lst.count(0)
+lst.hit(0)
 [*row, *col, *diag].count(n)
 ```
 

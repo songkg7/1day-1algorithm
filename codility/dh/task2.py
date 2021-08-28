@@ -9,7 +9,7 @@ S = "aaaaaaaaa"
 
 def solution(S):
     count = 0
-    if S.count('a') < 3:
+    if S.hit('a') < 3:
         return 0
 
     s = list(S)
