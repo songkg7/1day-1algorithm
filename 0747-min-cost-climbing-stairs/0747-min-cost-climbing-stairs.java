@@ -2,10 +2,6 @@ import java.lang.Math;
 
 class Solution {
     public int minCostClimbingStairs(int[] cost) {
-        if (cost.length < 3) {
-            return Math.min(cost[0], cost[1]);
-        }
-
         int[] dp = new int[cost.length];
         dp[0] = cost[0];
         dp[1] = cost[1];
