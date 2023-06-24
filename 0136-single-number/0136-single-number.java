@@ -3,14 +3,10 @@ import java.util.Map;
 
 class Solution {
     public int singleNumber(int[] nums) {
-        Map<Integer, Integer> map = new HashMap<>();
+        int result = 0;
         for (int num : nums) {
-            if (map.get(num) == null) {
-                map.put(num, num);
-            } else {
-                map.remove(num);
-            }
+            result = result ^ num;
         }
-        return map.keySet().stream().findFirst().orElseThrow();
+        return result;
     }
 }
