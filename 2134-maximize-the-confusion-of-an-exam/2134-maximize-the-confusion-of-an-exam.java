@@ -15,10 +15,10 @@ class Solution {
         for (int i = 0; i < key.length; i++) {
             if (key[i] != target) {
                 count++;
-                while (count > k) {
-                    if (key[start++] != target) {
-                        count--;
-                    }
+            }
+            while (count > k) {
+                if (key[start++] != target) {
+                    count--;
                 }
             }
             max = Math.max(max, i - start + 1);
