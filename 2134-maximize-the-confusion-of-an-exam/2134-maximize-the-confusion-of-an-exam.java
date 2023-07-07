@@ -4,9 +4,7 @@ class Solution {
         // k 개만큼 윈도우 안에 상대 글자를 포함할 수 있다
         char[] arr = answerKey.toCharArray();
         int tCount = cal(arr, k, 'T');
-        System.out.println(tCount);
         int fCount = cal(arr, k, 'F');
-        System.out.println(fCount);
         return Math.max(tCount, fCount);
     }
 
