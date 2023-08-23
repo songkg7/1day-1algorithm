@@ -1,16 +1,14 @@
 class RecentCounter {
 
-    TreeMap<Integer, Integer> map = new TreeMap<>();
+    TreeSet<Integer> set = new TreeSet<>();
 
     public RecentCounter() {
         
     }
     
     public int ping(int t) {
-        int startKey = t - 3000;
-        map.put(t, t);
-        var tailMap = map.tailMap(startKey);
-        return tailMap.size();
+        set.add(t);
+        return set.tailSet(t - 3000).size();
     }
 }
 
